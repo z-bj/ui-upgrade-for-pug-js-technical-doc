@@ -21,6 +21,3 @@
 ### ➪ See the original [page](https://pugjs.org/api/getting-started.html) 
 
 ### ➪ View the [update](https://z-bj.github.io/UI-update-for-pugJS-documentation/)
-
-
-# UI-update-for-pugJS-documentation
