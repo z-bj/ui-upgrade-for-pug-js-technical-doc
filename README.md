@@ -1,4 +1,4 @@
-![banner](https://github.com/z-bj/UI-update-for-PugJS/blob/master/pug-banner.webp)
+![banner](https://github.com/z-bj/UI-update-for-pugJS-documentation/blob/master/pug-banner.webp)
 
 ![pug](https://img.shields.io/badge/Pug-A86454.svg?style=for-the-badge&logo=Pug&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)
