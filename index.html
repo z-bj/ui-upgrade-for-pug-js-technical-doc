@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Pug Technical documentation page exercise for FreeCodeCamp's Responsive Web Design Certification.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=JetBrains+Mono&family=PT+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://iili.io/hQENuj.png">
+    <title>Getting Started</title>
+</head>
+
+<body>
+
+    <!-- ---------------------LEFT-NAV--------------------------------- -->
+
+    <nav id="navbar">
+        <img class="img-pug" src="https://iili.io/hQEh8u.webp" />
+         <header style="font-size: 2rem;color: #56332B;">Documentation</header>
+        <ul>
+            <li><p style="font-size: 1.5rem;color: #56332B;cursor:default" >API</p></li>
+            <li><a href="#Getting_Started" class="nav-link">Getting Started</a></li>
+            <li><a href="#Express_Integration" class="nav-link">Express Integration</a></li>
+            <li><a href="#Reference" class="nav-link">Reference</a></li>
+            <li><p style="font-size: 1.5rem;color:#56332B; cursor:default">Language Reference</p></li>
+            <li><a href="#Attributes" class="nav-link">Attributes</a></li>
+            <li><a href="#Case" class="nav-link">Case</a></li>
+            <li><a href="#Code" class="nav-link">Code</a></li>
+            <li><a href="#Comments" class="nav-link">Comments</a></li>
+            <li><a href="#Conditionals" class="nav-link">Conditionals</a></li>
+            <li><a href="#Doctype" class="nav-link">Doctype</a></li>
+            <li><a href="#Filters" class="nav-link">Filters</a></li>
+            <li><a href="#Includes" class="nav-link">Includes</a></li>
+            <li><a href="#Template_Inheritance" class="nav-link">Template Inheritance</a></li>
+            <li><a href="#Interpolation" class="nav-link">Interpolation</a></li>
+            <li><a href="#Iteration" class="nav-link">Iteration</a></li>
+            <li><a href="#Mixins" class="nav-link">Mixins</a></li>
+            <li><a href="#Plain_Text" class="nav-link">Plain Text</a></li>
+            <li><a href="#Tags" class="nav-link">Tags</a></li>
+            <li><p style="font-size: 1.5rem;color:#56332B; cursor:default" >Support</p>
+            </li>
+            <li><a href="#Community_Support" class="nav-link">Community Support</a></li>
+            <li><a href="#Entreprise_Support" class="nav-link">Entreprise Support</a></li>
+            <li><a href="#Summary" class="nav-link">Summary</a></li>
+        </ul>
+    
+       
+    </nav>
+
+
+    <!-- ---------------------INTRO--------------------------------- -->
+
+    <main id="main-doc">
+
+        <cite>-Robust, elegant, feature rich template engine for Node.js</cite>
+        <hr>
+        <h4>Rename from "Jade"</h4>
+        <p>Heavily influenced by Haml and implemented with JavaScript.</p><br>
+        <p>This project was formerly known as "Jade". <br>However, it was revealed to us that "Jade" is a registered
+            trademark;<br> as a result, a rename was needed.</p>
+        <p>After some discussion among the maintainers,<br> "Pug" was chosen as the new name for this project. </p>
+
+
+        <!-- ---------------------Getting Started--------------------------------- -->
+
+        <section class="main-section" id="Getting_Started">
+            <header>
+                Getting Started
+            </header>
+
+            <article>
+                <h4>Installation <span class="pilcrow">¶</span></h4>
+                <p>Pug is available via <a href="https://www.npmjs.com/"><u>npm</u>:</a></p>
+
+                <pre><code>$ npm install pug
+                </code></pre>
+
+                <h4>Overview <span class="pilcrow">¶</span></h4>
+
+                <p>The general rendering process of Pug is simple. <strong>pug.compile()</strong> will compile the Pug
+                    source <br> code
+                    into a JavaScript function that takes a data object (called “<strong>locals</strong>”) as an
+                    argument. Call <br> that
+                    resultant function with your data, and voilà!, it will return a string of HTML rendered with <br>
+                    your data.</p>
+                <p>The compiled function can be re-used, and called with different sets of data.</p>
+
+                <pre><code>//- template.pug
+p #{name}'s Pug source code!
+                </code></pre>
+
+                <pre><code>const pug = require('pug');
+
+// Compile the source code
+const compiledFunction = pug.compileFile('template.pug');
+
+// Render a set of data
+console.log(compiledFunction({
+  name: 'Timothy'
+}));
+// "<p>Timothy's Pug source code!</p>"
+
+// Render another set of data
+console.log(compiledFunction({
+  name: 'Forbes'
+}));
+// "<p>Forbes's Pug source code!</p>"</code></pre>
+
+                <p>Pug also provides the pug.render() family of functions that combine compiling and rendering <br> into
+                    one step. However, the template function will be re-compiled every time render is called, <br> which
+                    might impact performance. Alternatively, you can use the cache option with render,<br> which will
+                    automatically store the compiled function into an internal cache.</p>
+
+                <pre><code>const pug = require('pug');
+
+    // Compile template.pug, and render a set of data
+    console.log(pug.renderFile('template.pug', {
+      name: 'Timothy'
+    }));
+    // "<p>Timothy's Pug source code!</p>"</code></pre>
+
+            </article>
+
+        </section>
+
+        <!-------------------- Express Integration-------------------- -->
+
+        <section class="main-section" id="Express_Integration">
+            <header>
+                Express Integration
+            </header>
+            <article>
+                <p>Pug fully integrates with Express, a popular Node.js web framework, as a supported view<br>
+                    engine. Check out Express’s excellent guide for how to integrate Pug with Express.</p>
+
+                <h4>Production Defaults <span class="pilcrow">¶</span></h4>
+
+                <p>In Express, the environmental variable NODE_ENV is designed to inform the web application of<br> the
+                    execution environment: whether it is in development or in production. Express and Pug<br>
+                    automatically modify the defaults of a few options in production environment, to provide a <br>
+                    better out-of-the-box experience for users.</p>
+                <br>
+                <p>Specifically, when process.env.NODE_ENV is set to 'production', and Pug is used with <br> Express,
+                    the compileDebug option is false by default, while the cache option is true.</p>
+                <br>
+                <p>To override the defaults for compileDebug and cache, you can set the respective property in <br>
+                    app.locals or res.locals objects to true or false. The cache option can also be <br> overriden
+                    through Express’s app.disable/enable('view cache').</p>
+                <br>
+                <p>For more details, check Express’s API reference.
+
+                </p>
+
+            </article>
+        </section>
+
+        <!-------------------- Reference-------------------- -->
+
+        <section class="main-section" id="Reference">
+            <header>
+                Reference
+            </header>
+            <article>
+                <p>This page details how to render Pug using the JavaScript API.</p>
+                <div class="blue-box">
+                    <h5> Tip</h5>
+                    <p><strong>Pug is available in your Web browser’s console!</strong> To test drive Pug’s API, as
+                        documented on this page, try entering:</p>
+                    <pre><code>pug.render('p Hello world!');
+                    </code></pre>
+                </div>
+            </article>
+        </section>
+
+
+        <!-- --------------------- Attributes--------------------------------- -->
+
+
+        <section class="main-section" id="Attributes">
+
+            <header>
+                Attributes
+            </header>
+
+            <article>
+                <p>Tag attributes look similar to HTML (with optional commas), but their values are just regular <br>
+                    JavaScript.</p>
+                <p>(NOTE: Examples on this page use the pipe character (|) for whitespace control.)</p>
+
+                <pre><code>a(href='//google.com') Google
+|
+|
+a(class='button' href='//google.com') Google
+|
+|
+a(class='button', href='//google.com') Google</code></pre>
+
+
+
+                <p>Normal JavaScript expressions work fine, too:</p>
+
+
+                <pre><code>
+- var authenticated = true
+body(class=authenticated ? 'authed' : 'anon')</code></pre>
+
+
+                <pre><code>
+(body class="authed">(/body></code></pre>
+
+                <h4>Multiline Attributes <span class="pilcrow">¶</span></h4>
+
+                <p>If you have many attributes, you can also spread them across many lines:</p>
+
+
+                <pre><code>const pug = require('pug');
+
+// Compile template.pug, and render a set of data
+console.log(pug.renderFile('template.pug', {
+name: 'Timothy'
+}));
+// "<p>Timothy's Pug source code!</p>"</code></pre>
+
+                <pre><code>const pug = require('pug');
+
+// Compile template.pug, and render a set of data
+console.log(pug.renderFile('template.pug', {
+name: 'Timothy'
+}));
+// "<p>Timothy's Pug source code!</p>"</code></pre>
+
+
+                <p>If your JavaScript runtime supports ES2015 template strings (including Node.js/io.js 1.0.0 and <br>
+                    later), you can use that syntax for attributes. This is really useful for attributes with really
+                    long <br> values:</p>
+
+
+                <pre><code>const pug = require('pug');
+// Compile template.pug, and render a set of data
+console.log(pug.renderFile('template.pug', {
+name: 'Timothy'
+}));
+// "<p>Timothy's Pug source code!</p>"</code></pre>
+
+                <pre><code>const pug = require('pug');
+// Compile template.pug, and render a set of data
+console.log(pug.renderFile('template.pug', {
+name: 'Timothy'
+}));
+// "<p>Timothy's Pug source code!</p>"</code></pre>
+
+
+
+
+                <h4>Quoted Attributes <span class="pilcrow">¶</span></h4>
+
+                <p>If your attribute name contains odd characters that might interfere with JavaScript syntax, either
+                    <br> quote it using "" or '', or use commas to separate different attributes. Examples of such
+                    <br>characters include [] and () (frequently used in Angular 2).</p>
+
+
+                <pre><code>//- In this case, `(click)` is treated as a
+//- function call instead of a attribute name,
+/- resulting in the unusual error.
+div(class='div-class' (click)='play()')</code></pre>
+                <pre><code>index.pug:4:11
+2| //- function call instead of a attribute name,
+3| //- resulting in the unusual error.
+> 4| div(class='div-class' (click)='play()')
+-----------------^
+                
+Syntax Error: Assigning to rvalue</p></code></pre>
+                <pre><code>div(class='div-class', (click)='play()')
+div(class='div-class' '(click)'='play()')</code></pre>
+
+
+                <h4>Attribute Interpolation <span class="pilcrow">¶</span></h4>
+
+                <div class="alert-danger">
+                    <h5> Caution</h5>
+                    <p>Previous versions of Pug/Jade supported an interpolation syntax such as:</p>
+                    <pre><code>a(href="/#{url}")Link</code></pre>
+                    <p>This syntax is <strong>no longer supported.</strong> Alternatives are found below. (Check our <a
+                            href="../api/migration-v2.html">migration guide</a> for more <br> information on other
+                        incompatibilities between Pug v2 and previous versions.)</p>
+                </div>
+
+            </article>
+
+
+            <!-- --------------------Case------------------------ -->
+
+            <section class="main-section" id="Case">
+                <header>Case</header>
+                <article>
+                    <p>The case statement is a shorthand for JavaScript’s switch statement. It takes the following<br>
+                        form:</p>
+                    <br>
+                    <h4>Case Fall Through <span class="pilcrow">¶</span></h4>
+                    <pre><code>const pug = require('pug');
+
+// Compile template.pug, and render a set of data
+console.log(pug.renderFile('template.pug', {
+name: 'Timothy'
+}));
+// "<p>Timothy's Pug source code!</p>"</code></pre>
+
+
+                    <p>If your JavaScript runtime supports ES2015 template strings (including Node.js/io.js 1.0.0 and
+                        <br>
+                        later), you can use that syntax for attributes. This is really useful for attributes with really
+                        long <br> values:</p>
+                    <h4>Block Expansion <span class="pilcrow">¶</span></h4>
+                    <pre><code>const pug = require('pug');
+
+// Compile template.pug, and render a set of data
+console.log(pug.renderFile('template.pug', {
+name: 'Timothy'
+}));
+// "<p>Timothy's Pug source code!</p>"</code></pre>
+
+
+                    <p>If your JavaScript runtime supports ES2015 template strings (including Node.js/io.js 1.0.0 and
+                        <br>
+                        later), you can use that syntax for attributes. This is really useful for attributes with really
+                        long <br> values:</p>
+
+                </article>
+            </section>
+
+            <!-- --------------------Code------------------------ -->
+
+
+            <section class="main-section" id="Code">
+                <header>Code</header>
+                <article>
+                    <p>Pug allows you to write inline JavaScript code in your templates. There are three types of
+                        code:<br> Unbuffered, Buffered, and Unescaped Buffered.</p>
+
+                    <pre><code>const pug = require('pug');
+            
+// Compile template.pug, and render a set of data
+console.log(pug.renderFile('template.pug', {
+  name: 'Timothy'
+}));
+// "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unbuffered Code
+                        <span class="pilcrow">¶</span></h4>
+                    <p>Unbuffered code starts with -. It does not directly add anything to the output.
+
+                    </p>
+                    <h4>Buffered Code <span class="pilcrow">¶</span></h4>
+                    <p>Unescaped buffered code starts with !=. It evaluates the JavaScript expression and outputs
+                        <br> the result. Unescaped buffered code does not perform any escaping, so is unsafe for
+                        user input:</p>
+
+                        <pre><code>const pug = require('pug');
+            
+ // Compile template.pug, and render a set of data
+ console.log(pug.renderFile('template.pug', {
+  name: 'Timothy'
+}));
+// "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unescaped Buffered Code <span class="pilcrow">¶</span></h4>
+                    <p>Unescaped buffered code starts with !=. It evaluates the JavaScript expression and outputs the
+                        <br> result. Unescaped buffered code does not perform any escaping, so is unsafe for user input:
+                    </p>
+
+                </article>
+            </section>
+
+
+            <!-- --------------------Comments------------------------ -->
+
+
+            <section class="main-section" id="Comments">
+                <header>Comments</header>
+                <article>
+                    <p>Pug allows you to write inline JavaScript code in your templates. There are three types of
+                        code:<br> Unbuffered, Buffered, and Unescaped Buffered.</p>
+
+                    <pre><code>const pug = require('pug');
+
+    // Compile template.pug, and render a set of data
+    console.log(pug.renderFile('template.pug', {
+      name: 'Timothy'
+    }));
+    // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unbuffered Code
+                        <span class="pilcrow">¶</span></h4>
+                    <h4>Buffered Code <span class="pilcrow">¶</span></h4>
+                    <p>Unescaped buffered code starts with !=. It evaluates the JavaScript expression and outputs
+                        <br> the result. Unescaped buffered code does not perform any escaping, so is unsafe for
+                        user input:</p>
+
+                    <pre><code>const pug = require('pug');
+
+    // Compile template.pug, and render a set of data
+    console.log(pug.renderFile('template.pug', {
+      name: 'Timothy'
+    }));
+    // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unescaped Buffered Code <span class="pilcrow">¶</span></h4>
+
+                </article>
+            </section>
+
+            <!-- --------------------Conditionals------------------------ -->
+
+
+            <section class="main-section" id="Conditionals">
+                <header>Conditionals</header>
+                <article>
+                    <p>Pug allows you to write inline JavaScript code in your templates. There are three types of
+                        code:<br> Unbuffered, Buffered, and Unescaped Buffered.</p>
+
+                    <pre><code>const pug = require('pug');
+
+   // Compile template.pug, and render a set of data
+   console.log(pug.renderFile('template.pug', {
+     name: 'Timothy'
+   }));
+   // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unbuffered Code
+                        <span class="pilcrow">¶</span></h4>
+                    <h4>Buffered Code <span class="pilcrow">¶</span></h4>
+                    <p>Unescaped buffered code starts with !=. It evaluates the JavaScript expression and outputs
+                        <br> the result. Unescaped buffered code does not perform any escaping, so is unsafe for
+                        user input:</p>
+
+                    <pre><code>const pug = require('pug');
+
+    // Compile template.pug, and render a set of data
+    console.log(pug.renderFile('template.pug', {
+      name: 'Timothy'
+    }));
+    // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unescaped Buffered Code <span class="pilcrow">¶</span></h4>
+
+                </article>
+            </section>
+
+
+            <!-- --------------------Doctype------------------------ -->
+
+
+            <section class="main-section" id="Doctype">
+                <header>Doctype</header>
+                <article>
+                    <p>Pug allows you to write inline JavaScript code in your templates. There are three types of
+                        code:<br> Unbuffered, Buffered, and Unescaped Buffered.</p>
+
+                    <pre><code>const pug = require('pug');
+
+   // Compile template.pug, and render a set of data
+   console.log(pug.renderFile('template.pug', {
+     name: 'Timothy'
+   }));
+   // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unbuffered Code
+                        <span class="pilcrow">¶</span></h4>
+                    <h4>Buffered Code <span class="pilcrow">¶</span></h4>
+                    <p>Unescaped buffered code starts with !=. It evaluates the JavaScript expression and outputs
+                        <br> the result. Unescaped buffered code does not perform any escaping, so is unsafe for
+                        user input:</p>
+
+                    <pre><code>const pug = require('pug');
+
+    // Compile template.pug, and render a set of data
+    console.log(pug.renderFile('template.pug', {
+      name: 'Timothy'
+    }));
+    // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unescaped Buffered Code <span class="pilcrow">¶</span></h4>
+
+                </article>
+            </section>
+
+
+
+            <!-- --------------------Filters------------------------ -->
+
+
+            <section class="main-section" id="Filters">
+                <header>Filters</header>
+                <article>
+                    <p>Pug allows you to write inline JavaScript code in your templates. There are three types of
+                        code:<br> Unbuffered, Buffered, and Unescaped Buffered.</p>
+
+                    <pre><code>const pug = require('pug');
+
+   // Compile template.pug, and render a set of data
+   console.log(pug.renderFile('template.pug', {
+     name: 'Timothy'
+   }));
+   // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unbuffered Code
+                        <span class="pilcrow">¶</span></h4>
+                    <h4>Buffered Code <span class="pilcrow">¶</span></h4>
+                    <p>Unescaped buffered code starts with !=. It evaluates the JavaScript expression and outputs
+                        <br> the result. Unescaped buffered code does not perform any escaping, so is unsafe for
+                        user input:</p>
+
+                    <pre><code>const pug = require('pug');
+     // Compile template.pug, and render a set of data
+     console.log(pug.renderFile('template.pug', {
+       name: 'Timothy'
+     }));
+     // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unescaped Buffered Code <span class="pilcrow">¶</span></h4>
+
+                </article>
+            </section>
+
+
+
+            <!-- --------------------Includes------------------------ -->
+
+
+            <section class="main-section" id="Includes">
+                <header>Includes</header>
+                <article>
+                    <p>Pug allows you to write inline JavaScript code in your templates. There are three types of
+                        code:<br> Unbuffered, Buffered, and Unescaped Buffered.</p>
+
+                    <pre><code>const pug = require('pug');
+
+  // Compile template.pug, and render a set of data
+  console.log(pug.renderFile('template.pug', {
+    name: 'Timothy'
+  }));
+  // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unbuffered Code
+                        <span class="pilcrow">¶</span></h4>
+                    <h4>Buffered Code <span class="pilcrow">¶</span></h4>
+                    <p>Unescaped buffered code starts with !=. It evaluates the JavaScript expression and outputs
+                        <br> the result. Unescaped buffered code does not perform any escaping, so is unsafe for
+                        user input:</p>
+
+                    <pre><code>const pug = require('pug');
+
+    // Compile template.pug, and render a set of data
+    console.log(pug.renderFile('template.pug', {
+      name: 'Timothy'
+    }));
+    // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unescaped Buffered Code <span class="pilcrow">¶</span></h4>
+
+                </article>
+            </section>
+
+
+
+    
+
+            <!-- --------------------Template Inheritance------------------------ -->
+
+
+            <section class="main-section" id="Template_Inheritance">
+                <header>Template Inheritance</header>
+                <article>
+                    <p>Pug allows you to write inline JavaScript code in your templates. There are three types of
+                        code:<br> Unbuffered, Buffered, and Unescaped Buffered.</p>
+
+                    <pre><code>const pug = require('pug');
+
+   // Compile template.pug, and render a set of data
+   console.log(pug.renderFile('template.pug', {
+     name: 'Timothy'
+   }));
+   // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unbuffered Code
+                        <span class="pilcrow">¶</span></h4>
+                    <h4>Buffered Code <span class="pilcrow">¶</span></h4>
+                    <p>Unescaped buffered code starts with !=. It evaluates the JavaScript expression and outputs
+                        <br> the result. Unescaped buffered code does not perform any escaping, so is unsafe for
+                        user input:</p>
+
+                    <pre><code>const pug = require('pug');
+
+     // Compile template.pug, and render a set of data
+     console.log(pug.renderFile('template.pug', {
+       name: 'Timothy'
+     }));
+     // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unescaped Buffered Code <span class="pilcrow">¶</span></h4>
+
+                </article>
+            </section>
+
+
+
+
+
+
+            <!-- --------------------Interpolation------------------------ -->
+
+
+            <section class="main-section" id="Interpolation">
+                <header>Interpolation</header>
+                <article>
+                    <p>Pug allows you to write inline JavaScript code in your templates. There are three types of
+                        code:<br> Unbuffered, Buffered, and Unescaped Buffered.</p>
+
+                    <pre><code>const pug = require('pug');
+    // Compile template.pug, and render a set of data
+    console.log(pug.renderFile('template.pug', {
+      name: 'Timothy'
+    }));
+    // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unbuffered Code
+                        <span class="pilcrow">¶</span></h4>
+                    <h4>Buffered Code <span class="pilcrow">¶</span></h4>
+                    <p>Unescaped buffered code starts with !=. It evaluates the JavaScript expression and outputs
+                        <br> the result. Unescaped buffered code does not perform any escaping, so is unsafe for
+                        user input:</p>
+
+                    <pre><code>const pug = require('pug');
+
+   // Compile template.pug, and render a set of data
+   console.log(pug.renderFile('template.pug', {
+     name: 'Timothy'
+   }));
+   // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unescaped Buffered Code <span class="pilcrow">¶</span></h4>
+
+                </article>
+            </section>
+
+
+
+            <!-- --------------------Iteration------------------------ -->
+
+
+            <section class="main-section" id="Iteration">
+                <header>Iteration</header>
+                <article>
+                    <p>Pug allows you to write inline JavaScript code in your templates. There are three types of
+                        code:<br> Unbuffered, Buffered, and Unescaped Buffered.</p>
+
+                    <pre><code>const pug = require('pug');
+
+  // Compile template.pug, and render a set of data
+  console.log(pug.renderFile('template.pug', {
+    name: 'Timothy'
+  }));
+  // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unbuffered Code
+                        <span class="pilcrow">¶</span></h4>
+                    <h4>Buffered Code <span class="pilcrow">¶</span></h4>
+                    <p>Unescaped buffered code starts with !=. It evaluates the JavaScript expression and outputs
+                        <br> the result. Unescaped buffered code does not perform any escaping, so is unsafe for
+                        user input:</p>
+
+                    <pre><code>const pug = require('pug');
+     // Compile template.pug, and render a set of data
+     console.log(pug.renderFile('template.pug', {
+       name: 'Timothy'
+     }));
+     // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unescaped Buffered Code <span class="pilcrow">¶</span></h4>
+
+                </article>
+            </section>
+
+
+
+            <!-- --------------------Mixins------------------------ -->
+
+
+            <section class="main-section" id="Mixins">
+                <header>Mixins</header>
+                <article>
+                    <p>Pug allows you to write inline JavaScript code in your templates. There are three types of
+                        code:<br> Unbuffered, Buffered, and Unescaped Buffered.</p>
+
+                    <pre><code>const pug = require('pug');
+
+ // Compile template.pug, and render a set of data
+ console.log(pug.renderFile('template.pug', {
+   name: 'Timothy'
+ }));
+ // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unbuffered Code
+                        <span class="pilcrow">¶</span></h4>
+                    <h4>Buffered Code <span class="pilcrow">¶</span></h4>
+                    <p>Unescaped buffered code starts with !=. It evaluates the JavaScript expression and outputs
+                        <br> the result. Unescaped buffered code does not perform any escaping, so is unsafe for
+                        user input:</p>
+
+                    <pre><code>const pug = require('pug');
+
+    // Compile template.pug, and render a set of data
+    console.log(pug.renderFile('template.pug', {
+      name: 'Timothy'
+    }));
+    // "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Unescaped Buffered Code <span class="pilcrow">¶</span></h4>
+
+                </article>
+            </section>
+
+
+
+            <!-- --------------------Plain Text------------------------ -->
+
+
+            <section class="main-section" id="Plain_Text">
+                <header>Plain Text</header>
+                <article>
+                    <p>Pug provides four ways of getting plain text — that is, any code or text content that should
+                        go,<br> mostly unprocessed, directly into the rendered HTML. They are useful in different
+                        situations.</p>
+                    <p>Pug allows you to write inline JavaScript code in your templates. There are three types of
+                        code:<br> Unbuffered, Buffered, and Unescaped Buffered.</p>
+                    <p>Pug allows you to write inline JavaScript code in your templates. There are three types of
+                        code:<br> Unbuffered, Buffered, and Unescaped Buffered.</p>
+
+                                            <pre><code>const pug = require('pug');
+
+// Compile template.pug, and render a set of data
+console.log(pug.renderFile('template.pug', {
+name: 'Timothy'
+}));
+// "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Block Expansion
+                        <span class="pilcrow">¶</span></h4>
+                    <h4>Self-Closing Tags <span class="pilcrow">¶</span></h4>
+                    <p>Unescaped buffered code starts with !=. It evaluates the JavaScript expression and outputs
+                        <br> the result. Unescaped buffered code does not perform any escaping, so is unsafe for
+                        user input:</p>
+
+                    <pre><code>const pug = require('pug');
+
+// Compile template.pug, and render a set of data
+console.log(pug.renderFile('template.pug', {
+name: 'Timothy'
+}));
+// "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Rendered Whitespace
+                        <span class="pilcrow">¶</span></h4>
+
+                </article>
+            </section>
+
+
+
+            <!-- --------------------Tags------------------------ -->
+
+
+            <section class="main-section" id="Tags">
+                <header>Tags</header>
+                <article>
+                    <p>By default, text at the start of a line (or after only white space) represents an HTML
+                        tag.<br>Indented tags are nested, creating the tree structure of HTML.</p>
+
+                    <pre><code>const pug = require('pug');
+
+// Compile template.pug, and render a set of data
+console.log(pug.renderFile('template.pug', {
+name: 'Timothy'
+}));
+// "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Block Expansion
+                        <span class="pilcrow">¶</span></h4>
+                    <h4>Self-Closing Tags <span class="pilcrow">¶</span></h4>
+                    <p>Unescaped buffered code starts with !=. It evaluates the JavaScript expression and outputs
+                        <br> the result. Unescaped buffered code does not perform any escaping, so is unsafe for
+                        user input:</p>
+
+                    <pre><code>const pug = require('pug');
+
+// Compile template.pug, and render a set of data
+console.log(pug.renderFile('template.pug', {
+name: 'Timothy'
+}));
+// "<p>Timothy's Pug source code!</p>"</code></pre>
+                    <h4>Rendered Whitespace
+                        <span class="pilcrow">¶</span></h4>
+
+                </article>
+            </section>
+
+
+
+
+
+
+            <!-------------------- Community-Support-------------------- -->
+
+
+            <section class="main-section" id="Community_Support">
+                <header>
+                    Community Support
+                </header>
+                <article>
+                    <p>Pug is a community run open source project, and we’d love to help you get started.</p>
+
+                    <h4>Stack Overflow <span class="pilcrow">¶</span></h4>
+                    <p>For crowdsourced technical questions from expert Pug devs in our community. Also frequented by
+                        the Pug core team.
+                    </p>
+                    <p><a href="https://stackoverflow.com/questions/tagged/pug">Post a question</a></p>
+
+
+                    <h4>Twitter <span class="pilcrow">¶</span></h4>
+                    <p>Receive the latest news on Pug</p>
+                    <p><a href="https://twitter.com/pug_js">Follow us</a></p>
+
+                    <h4>GitHub <span class="pilcrow">¶</span></h4>
+                    <p>We use GitHub issues exclusively as a bugs and feature requests tracker. If you think you have
+                        <br> found a bug, or have a new feature idea, please start by making sure it hasn’t already been
+                        <br> reported or fixed. You can search through existing issues and pull requests to see if
+                        someone <br> has reported one similar to yours.</p>
+                    <p><a href="https://github.com/pugjs/pug/issues">Open an issue</a></p>
+
+                </article>
+            </section>
+
+
+
+            <!--------------------Entreprise-Support-------------------- -->
+
+
+            <section class="main-section" id="Entreprise_Support">
+                <header>
+                    Entreprise Support
+                </header>
+                <article>
+
+                    <h4>Tidelift subscription <span class="pilcrow">¶</span></h4>
+
+                    <p>Pug and the maintainers of thousands of other packages are working with Tidelift to deliver <br>
+                        one enterprise subscription that covers all of the open-source you use.
+                    </p>
+                    <br>
+                    <p>If you want the flexibility of open-source and the confidence of commercial-grade software, this
+                        <br> is worth looking at.</p>
+                    <br>
+                    <p>The Tidelift Subscription manages your dependencies for you:</p><br>
+
+                    <ul>
+                        <li>Get the tools you need to continuously catalog and understand the open-source software that
+                            your application depends on.</li>
+                        <li>Your subscription helps pay the open-source community maintainers of the packages you use,
+                            to ensure they meet the standards you require.</li>
+                        <li>Address issues proactively, with tools that scan for new security, licensing, and
+                            maintenance issues, and alert participating open-source maintainers so they can resolve them
+                            on your behalf.</li>
+                        <li>Tidelift helps measure and improve your open-source dependencies’ health – which improves
+                            your app’s health – and gives a shortlist of high-impact steps your team can take to improve
+                            them even more.</li>
+                        <li>Get commercial assurances that don’t come for free with open-source packages, such as
+                            intellectual property indemnification and support under a service level agreement. You
+                            expect these guarantees from proprietary software, and you can get them when using
+                            open-source as well.</li>
+                    </ul>
+
+                    <p>The end result? All of the capabilities you expect from commercial-grade software, for the
+                        full<br> breadth of open-source you use. That means less time grappling with esoteric
+                        open-source<br> trivia, and more time building your own applications – and your business.</p>
+                    <br>
+
+
+                    <p><a
+                            href="https://tidelift.com/subscription/pkg/npm-pug?utm_source=npm-pug&amp;utm_medium=referral&amp;utm_campaign=enterprise">Get
+                            more details</a></p>
+                    <br>
+
+
+                    <p><a
+                            href="https://tidelift.com/subscription/request-a-demo?utm_source=npm-pug&amp;utm_medium=referral&amp;utm_campaign=enterprise">Request
+                            a demo</a></p>
+
+                    <h4>Custom Work
+                        <span class="pilcrow">¶</span></h4>
+
+                    <p>Tweak Pug to meet specific requirements. Give us a summary of your needs and we’ll help you
+                        if<br> we can.
+                    </p>
+                    <br>
+                    <p>Note that work must be Pug related. We don’t accept general development work. Our<br> contracting
+                        price is $200/hour or $1,500/day.
+
+                    </p>
+                    <br>
+
+                    <p><a href="mailto:forbes@lindesay.co.uk">Send us an email</a></p>
+
+                    <!-- -------------------------------Summary --------------------------------------->
+
+                    <section class="main-section" id="Summary">
+                        <header>Summary</header>
+                        <article>
+
+                            <p>You have reached the end of the documentation!
+
+                                Of course, this is a layout exercise, and some chapters have been paste/colled for the
+                                sake
+                                of conciseness.
+
+                            </p>
+                            <br>
+
+                            <p>All the documentation on this page is taken from <a href="https://pugjs.org/api/getting-started.html
+                            ">PugJs</a></p>
+<br>
+                        
+
+
+                        </article>
+                        
+                    </section>
+                    <p style="text-align:center;">Certification Project, Technical Documentation Page, <a class="hover-underline" href="https://www.freecodecamp.org/learn/2022/responsive-web-design/build-a-technical-documentation-page-project/build-a-technical-documentation-page"> freeCodeCamp(🔥)</a> <br>
+Powered by z-bj<p/>
+
+    </main>
+
+    
+        
+   
+
+</body>
+
+</html>
