@@ -9,7 +9,7 @@
 <br>
 
 
-## ➪ Read the [User story](https://www.freecodecamp.org/learn/2022/responsive-web-design/build-a-technical-documentation-page-project/build-a-technical-documentation-page)
+## ➪ Read the [User story](https://github.com/z-bj/UI_UPGRADE_FOR_PUG_JS_TECHNICAL_DOCUMENTATION/blob/master/User_story.md)
 "For this project, you will build a technical documentation page to serve as instruction or reference for a topic."
 
 ### ➪ See the original [page](https://pugjs.org/api/getting-started.html) 
