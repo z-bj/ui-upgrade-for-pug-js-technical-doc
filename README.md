@@ -14,4 +14,4 @@
 
 ### ➪ See the original [page](https://pugjs.org/api/getting-started.html) 
 
-### ➪ View the [update](https://z-bj.github.io/ui-upgrade-for-pug-js-technical-doc/)
+### ➪ View the [upgrade](https://z-bj.github.io/ui-upgrade-for-pug-js-technical-doc/)
